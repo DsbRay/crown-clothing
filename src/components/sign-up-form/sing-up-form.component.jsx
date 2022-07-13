@@ -80,7 +80,9 @@ const SignUpForm = () => {
           name="confirmPassword"
           value={confirmPassword}
         />
-        <Button type="submit">Sign up</Button>
+        <Button type="submit" buttonType="google-sign-in">
+          Sign up
+        </Button>
       </form>
     </div>
   );
