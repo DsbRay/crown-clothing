@@ -3,7 +3,7 @@ import CategotyPreview from "../../components/category-preview/category-preview.
 import {
   selectCategoriesMap,
   selectCategoriesIsLoading,
-} from "../../components/store/categories/category.selector";
+} from "../../store/categories/category.selector";
 import { useSelector } from "react-redux";
 import Spinner from "../../components/spinner/spinner.component";
 

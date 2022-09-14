@@ -7,7 +7,7 @@ import {
   createUserDocumentFromAuth,
 } from "./utils/firebase.utils";
 
-import { setCurrentUser } from "./components/store/user/user.action";
+import { setCurrentUser } from "./store/user/user.action";
 
 import Home from "./routes/home/home.component";
 import Navigation from "./routes/navigation/navigation.component";
