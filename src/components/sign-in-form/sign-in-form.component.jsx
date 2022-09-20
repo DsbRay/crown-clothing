@@ -1,9 +1,9 @@
 import { useState } from "react";
-
+import { useDispatch } from "react-redux";
 import {
-  signInWithGooglePopup,
-  SignInAuthUserWithEmailAndPassword,
-} from "../../utils/firebase.utils";
+  googleSignInStart,
+  emailSignInStart,
+} from "../../store/user/user.action";
 
 import Button, { BUTTON_TYPE_CLASSES } from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
@@ -18,11 +18,13 @@ const defaultFormFields = {
 };
 
 const SignInForm = () => {
+  const dispatch = useDispatch();
+
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
   const signInWithGoogle = async () => {
-    await signInWithGooglePopup();
+    dispatch(googleSignInStart());
   };
 
   const handleChange = (event) => {
@@ -33,19 +35,9 @@ const SignInForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await SignInAuthUserWithEmailAndPassword(email, password);
+      dispatch(emailSignInStart(email, password));
     } catch (error) {
-      const { code } = error;
-      switch (code) {
-        case "auth/wrong-password":
-          alert("Incorrect Password");
-          break;
-        case "auth/user-not-found":
-          alert("User not found");
-          break;
-        default:
-          alert("Something went wrong");
-      }
+      console.log(error);
     }
   };
   return (
