@@ -10,7 +10,6 @@ import Spinner from "../../components/spinner/spinner.component";
 const CategoriesPreview = () => {
   const categoriesMap = useSelector(selectCategoriesMap);
   const isLoading = useSelector(selectCategoriesIsLoading);
-
   return (
     <Fragment>
       {isLoading ? (
@@ -18,6 +17,7 @@ const CategoriesPreview = () => {
       ) : (
         Object.keys(categoriesMap).map((title) => {
           const products = categoriesMap[title];
+          console.log(products);
           return (
             <CategotyPreview key={title} title={title} products={products} />
           );

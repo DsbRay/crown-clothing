@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { selectCartItems } from "../../store/cart/cart.selector";
@@ -11,7 +12,17 @@ import {
   Price,
 } from "./product-card.styles";
 
-const ProductCard = ({ product }) => {
+type ProductItemProps = {
+  id: number;
+  name: string;
+  price: number;
+  imageUrl: string;
+};
+type ProductProps = {
+  product: ProductItemProps;
+};
+
+const ProductCard: FC<ProductProps> = ({ product }: ProductProps) => {
   const { name, price, imageUrl } = product;
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
